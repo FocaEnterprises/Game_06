@@ -110,9 +110,6 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener,M
 		
 	}
 	
-
-
-	
 	public void render(){
 		BufferStrategy bs = this.getBufferStrategy();
 		if(bs == null){
@@ -122,17 +119,14 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener,M
 		Graphics g = image.getGraphics();
 		g.setColor(new Color(122,102,255));
 		g.fillRect(0, 0,WIDTH,HEIGHT);
-		
-		/*Renderização do jogo*/
-		//Graphics2D g2 = (Graphics2D) g;
+
 		world.render(g);
 		Collections.sort(entities,Entity.nodeSorter);
 		for(int i = 0; i < entities.size(); i++) {
 			Entity e = entities.get(i);
 			e.render(g);
 		}
-		
-		/***/
+
 		g.dispose();
 		g = bs.getDrawGraphics();
 		g.drawImage(image, 0, 0,WIDTH*SCALE,HEIGHT*SCALE,null);
