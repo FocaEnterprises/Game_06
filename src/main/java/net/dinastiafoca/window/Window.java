@@ -17,6 +17,7 @@ public class Window {
         this.frame = new JFrame(title);
         this.frame.setSize(width, height);
         this.frame.setLocationRelativeTo(null);
+        this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.frame.setVisible(true);
     }
 
