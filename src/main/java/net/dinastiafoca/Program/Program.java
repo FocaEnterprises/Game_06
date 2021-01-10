@@ -6,7 +6,7 @@ public class Program {
         final GameManager manager = new GameManager();
         manager.startGame();
 
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> manager.stopGame()));
+        Runtime.getRuntime().addShutdownHook(new Thread(manager::stopGame));
     }
 
 }

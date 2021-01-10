@@ -4,12 +4,11 @@ import net.dinastiafoca.game.BaseGame;
 
 public class GameLooping implements Runnable, Looping {
 
+    private final BaseGame baseGame;
     private final int TPS;
 
-    private BaseGame baseGame;
-
     private Thread thread;
-    private boolean isRunning;
+    private volatile boolean isRunning;
 
     public GameLooping(BaseGame game, int tps) {
         this.baseGame = game;
@@ -35,7 +34,7 @@ public class GameLooping implements Runnable, Looping {
 
     @Override
     public boolean isRunning() {
-        return false;
+        return isRunning;
     }
 
     @Override
@@ -44,24 +43,24 @@ public class GameLooping implements Runnable, Looping {
         long lastTime = System.nanoTime();
         long now;
 
-        double nsPerTick = 1_000_000_000 / this.TPS;
+        double nsPerTick = 1_000_000_000D / this.TPS;
         double unprocessed = 0.0D;
 
         int currentTps = 0;
         int currentFps = 0;
 
-        while(isRunning) { // TODO: colocar boolean running aqui
+        while(isRunning) {
             now = System.nanoTime();
             unprocessed += (now - lastTime) / nsPerTick;
             lastTime = now;
 
             while(unprocessed >= 1) {
-                // baseGame.tick();
+                baseGame.doTick();
                 ++currentTps;
                 --unprocessed;
             }
 
-            //baseGame.render();
+            baseGame.doRender();
             ++currentFps;
 
             if(System.currentTimeMillis() - timer >= 1000){
@@ -72,18 +71,10 @@ public class GameLooping implements Runnable, Looping {
             }
 
             try {
-                Thread.sleep(4);
+                Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-    public void setBaseGame(BaseGame game)
-    {
-        if(this.baseGame == null)
-        {
-            this.baseGame = game;
         }
     }
 }
