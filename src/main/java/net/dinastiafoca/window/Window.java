@@ -1,6 +1,7 @@
 package net.dinastiafoca.window;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Window {
     private String title;
@@ -8,6 +9,7 @@ public class Window {
     private int height;
 
     private JFrame frame;
+    private Canvas canvas;
 
     private Window(String title, int width, int height) {
         this.title = title;
@@ -15,7 +17,13 @@ public class Window {
         this.height = height;
 
         this.frame = new JFrame(title);
+        this.canvas = new Canvas();
+
         this.frame.setSize(width, height);
+        this.canvas.setPreferredSize(new Dimension(width, height));
+
+        this.frame.add(canvas);
+
         this.frame.setLocationRelativeTo(null);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.frame.setVisible(true);
@@ -31,6 +39,10 @@ public class Window {
 
     public int getHeight() {
         return height;
+    }
+
+    public Canvas getCanvas() {
+        return canvas;
     }
 
     public static class WindowBuilder {

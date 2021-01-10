@@ -1,20 +1,20 @@
 package net.dinastiafoca.game;
 
 import net.dinastiafoca.window.Window;
+import net.dinastiafoca.window.renderer.Renderer;
 
 public class Game implements BaseGame {
+    public Renderer renderer;
 
     @Override
     public void onCreate() {
-        new Window.WindowBuilder()
+        Window window = new Window.WindowBuilder()
                 .setTitle("--")
                 .setWidth(800)
                 .setHeight(600)
                 .build();
-    }// Oque a gente faz da vida? ;-;
-    // Bom um commitzim pra registrar
-    // Que nome eu coloco no commit? '-'
-    // Como não tenho criatividade, colocaria: "Create Window and Window.WindowBuilder"
+        renderer = new Renderer(window);
+    }
 
     @Override
     public void doTick() {
@@ -23,7 +23,9 @@ public class Game implements BaseGame {
 
     @Override
     public void doRender() {
+        renderer.begin();
 
+        renderer.end();
     }
 
     @Override
