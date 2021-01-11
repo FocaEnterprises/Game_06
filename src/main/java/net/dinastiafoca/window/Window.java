@@ -1,5 +1,7 @@
 package net.dinastiafoca.window;
 
+import net.dinastiafoca.input.Keyboard;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -43,6 +45,10 @@ public class Window {
 
     public Canvas getCanvas() {
         return canvas;
+    }
+
+    public void addKeyboard(Keyboard keyboard) {
+        getCanvas().addKeyListener(keyboard);
     }
 
     public static class WindowBuilder {
