@@ -39,7 +39,7 @@ public class DimensionAdapter implements Dimension
       Blocks.getById(block).render(renderer, (block % WIDTH) * Block.BLOCK_SIZE, (block / WIDTH) * Block.BLOCK_SIZE);
     }
 
-    getEntities().forEach(entity -> render(renderer));
+    getEntities().forEach(entity -> entity.render(renderer));
   }
 
   @Override
