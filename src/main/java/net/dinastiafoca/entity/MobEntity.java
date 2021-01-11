@@ -1,4 +1,4 @@
-package net.dinastiafoca.entities;
+package net.dinastiafoca.entity;
 
 import net.dinastiafoca.world.World;
 

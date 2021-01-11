@@ -1,6 +1,6 @@
 package net.dinastiafoca.world;
 
-import net.dinastiafoca.entities.Entity;
+import net.dinastiafoca.entity.Entity;
 import net.dinastiafoca.window.renderer.Renderer;
 
 import java.util.List;

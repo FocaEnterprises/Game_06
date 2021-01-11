@@ -1,6 +1,6 @@
 package net.dinastiafoca.world.impl;
 
-import net.dinastiafoca.entities.Entity;
+import net.dinastiafoca.entity.Entity;
 import net.dinastiafoca.registry.Blocks;
 import net.dinastiafoca.window.renderer.Renderer;
 import net.dinastiafoca.world.Block;
@@ -38,6 +38,8 @@ public class DimensionAdapter implements Dimension
     for(int block = 0; block < blocks.length; block++) {
       Blocks.getById(block).render(renderer, (block % WIDTH) * Block.BLOCK_SIZE, (block / WIDTH) * Block.BLOCK_SIZE);
     }
+
+    getEntities().forEach(entity -> render(renderer));
   }
 
   @Override
