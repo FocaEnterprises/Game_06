@@ -18,7 +18,7 @@ public class Game implements BaseGame {
                 .setHeight(600)
                 .build();
         renderer = new Renderer(window);
-        world = new SimpleWorld(20, 20);
+        world = new SimpleWorld(100, 100);
     }
 
     @Override
