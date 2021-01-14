@@ -23,7 +23,7 @@ public class Game implements BaseGame {
 
     @Override
     public void doTick() {
-
+        world.update();
     }
 
     @Override
