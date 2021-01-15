@@ -33,6 +33,7 @@ public class Game implements BaseGame {
         camera = new Camera();
 
         player = entityFactory.createPlayer(0, 0);
+        world.getDimension(0).addEntity(player);
     }
 
     @Override
