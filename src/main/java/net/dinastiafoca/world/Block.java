@@ -8,19 +8,19 @@ public abstract class Block {
 
   private final int ID;
 
-  public Block(int id) {
+  public Block(int id)
+  {
     this.ID = id;
   }
 
-  public void update(){
+  public abstract void render(Renderer renderer, int x, int y);
+
+  public void update() {
 
   }
 
-  public void render(Renderer renderer, int x, int y) {
-
-  }
-
-  public int getID() {
+  public int getId()
+  {
     return ID;
   }
 }

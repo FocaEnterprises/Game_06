@@ -36,7 +36,7 @@ public class DimensionAdapter implements Dimension
   @Override
   public void render(Renderer renderer) {
     for(int block = 0; block < blocks.length; block++) {
-      Blocks.getById(block).render(renderer, (block % WIDTH) * Block.BLOCK_SIZE, (block / WIDTH) * Block.BLOCK_SIZE);
+      Blocks.getById(blocks[block]).render(renderer, (block % WIDTH) * Block.BLOCK_SIZE, (block / WIDTH) * Block.BLOCK_SIZE);
     }
 
     getEntities().forEach(entity -> entity.render(renderer));
@@ -72,6 +72,6 @@ public class DimensionAdapter implements Dimension
     if(x >= WIDTH || x < 0 || y >= HEIGHT || y < 0)
       throw new AssertionError();
 
-    blocks[x + y * WIDTH] = block.getID();
+    blocks[x + y * WIDTH] = block.getId();
   }
 }

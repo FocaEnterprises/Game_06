@@ -18,7 +18,7 @@ public class Blocks {
   }
 
   private static Block register(Block block) {
-    blocks.put(block.getID(), block);
+    blocks.put(block.getId(), block);
     return block;
   }
 }
