@@ -43,6 +43,12 @@ public class SimpleWorld implements World
   }
 
   @Override
+  public Dimension getDimension(int dimensionIndex)
+  {
+    return dimensions[dimensionIndex];
+  }
+
+  @Override
   public Dimension getCurrentDimension() {
     return currentDimension;
   }

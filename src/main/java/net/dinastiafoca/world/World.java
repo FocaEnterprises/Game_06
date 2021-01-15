@@ -23,9 +23,17 @@ public interface World {
 
     /**
      * Get all dimensions on this world
-     * @return clone of dimentions array
+     * @return clone of dimensions array
      */
     Dimension[] getDimensions();
+
+    /**
+     * Get the dimension in this index
+     * @param dimensionIndex the index!
+     * @return The dimension if index is valid.
+     * @throws IndexOutOfBoundsException if index is invalid.
+     */
+    Dimension getDimension(int dimensionIndex);
 
     /**
      * Get the Player dimension
