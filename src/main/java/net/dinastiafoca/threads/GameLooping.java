@@ -46,7 +46,6 @@ public class GameLooping implements Runnable, Looping {
         double nsPerTick = 1_000_000_000D / this.TPS;
         double unprocessed = 0.0D;
 
-        int currentTps = 0;
         int currentFps = 0;
 
         while(isRunning) {
@@ -56,16 +55,14 @@ public class GameLooping implements Runnable, Looping {
 
             while(unprocessed >= 1) {
                 baseGame.doTick();
-                ++currentTps;
+                baseGame.doRender();
+                ++currentFps;
                 --unprocessed;
             }
 
-            baseGame.doRender();
-            ++currentFps;
 
             if(System.currentTimeMillis() - timer >= 1000){
-                System.out.printf("Running at %d ticks and %d frames\n", currentTps, currentFps);
-                currentTps = 0;
+                System.out.printf("Running at %d frames\n", currentFps);
                 currentFps = 0;
                 timer += 1000;
             }
