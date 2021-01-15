@@ -26,6 +26,7 @@ public class Window {
 
         this.frame.add(canvas);
 
+        this.frame.setResizable(false);
         this.frame.setLocationRelativeTo(null);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.frame.setVisible(true);
