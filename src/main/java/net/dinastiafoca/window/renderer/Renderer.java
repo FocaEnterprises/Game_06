@@ -31,6 +31,7 @@ public class Renderer {
     }
 
     public void begin() {
+        g = image.getGraphics();
         g.setColor(Color.black);
         g.fillRect(0, 0, 255, 255);
     }

@@ -1,19 +1,20 @@
 package net.dinastiafoca.entity;
 
+import net.dinastiafoca.window.renderer.Sprite;
 import net.dinastiafoca.world.World;
 
 public abstract class MobEntity extends LivingEntity
 {
   protected int speed;
 
-  public MobEntity(World world, int x, int y, int width, int height, int life, int maxLife)
+  public MobEntity(World world, int x, int y, int width, int height, Sprite sprite, int life, int maxLife)
   {
-    super(world, x, y, width, height, life, maxLife);
+    super(world, x, y, width, height, sprite, life, maxLife);
   }
 
-  public MobEntity(World world, int x, int y, int width, int height, int maxLife)
+  public MobEntity(World world, int x, int y, int width, int height, Sprite sprite, int maxLife)
   {
-    this(world, x, y, width, height, maxLife, maxLife);
+    this(world, x, y, width, height, sprite, maxLife, maxLife);
   }
 
   public void moveX(int x)

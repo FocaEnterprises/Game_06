@@ -1,5 +1,6 @@
 package net.dinastiafoca.entity;
 
+import net.dinastiafoca.window.renderer.Sprite;
 import net.dinastiafoca.world.World;
 
 public abstract class LivingEntity extends Entity {
@@ -7,14 +8,14 @@ public abstract class LivingEntity extends Entity {
     protected int life;
     protected int maxLife;
 
-    public LivingEntity(World world, int x, int y, int width, int height, int life, int maxLife) {
-        super(world, x, y, width, height);
+    public LivingEntity(World world, int x, int y, int width, int height, Sprite sprite, int life, int maxLife) {
+        super(world, x, y, width, height, sprite);
         this.life = life;
         this.maxLife = maxLife;
     }
 
-    public LivingEntity(World world, int x, int y, int width, int height, int maxLife) {
-        this(world, x, y, width, height, maxLife, maxLife);
+    public LivingEntity(World world, int x, int y, int width, int height, Sprite sprite, int maxLife) {
+        this(world, x, y, width, height, sprite, maxLife, maxLife);
     }
 
     public int getLife()

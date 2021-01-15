@@ -1,6 +1,7 @@
 package net.dinastiafoca.entity;
 
 import net.dinastiafoca.window.renderer.Renderer;
+import net.dinastiafoca.window.renderer.Sprite;
 import net.dinastiafoca.world.World;
 
 import java.awt.Rectangle;
@@ -20,12 +21,15 @@ public abstract class Entity {
     protected int maskWidth;
     protected int maskHeight;
 
-    public Entity(World world, int x, int y, int width, int height) {
+    protected Sprite sprite;
+
+    public Entity(World world, int x, int y, int width, int height, Sprite sprite) {
         this.world = world;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.sprite = sprite;
     }
 
     public void update() {
