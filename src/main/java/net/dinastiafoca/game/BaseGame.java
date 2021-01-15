@@ -1,5 +1,7 @@
 package net.dinastiafoca.game;
 
+import net.dinastiafoca.window.renderer.Spritesheet;
+
 /**
  * Represents a Game
  */
@@ -24,4 +26,10 @@ public interface BaseGame {
      * Called on application shutting down
      */
     void onDestroy();
+
+    /**
+     * Get the game sprite sheet
+     * @return game sprite sheet instance
+     */
+    Spritesheet getSpriteSheet();
 }
