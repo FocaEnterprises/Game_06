@@ -1,6 +1,7 @@
 package net.dinastiafoca.entity.entities;
 
 import net.dinastiafoca.entity.MobEntity;
+import net.dinastiafoca.window.Camera;
 import net.dinastiafoca.window.renderer.Renderer;
 import net.dinastiafoca.window.renderer.Sprite;
 import net.dinastiafoca.world.Block;
@@ -22,8 +23,14 @@ public class EntityPlayer extends MobEntity
   }
 
   @Override
-  public void render(Renderer renderer)
+  public void render(Renderer renderer, Camera camera)
   {
-    renderer.drawImage(sprite.getSprite(), x, y, width, height, null);
+    renderer.drawImage(
+            sprite.getSprite(),
+            camera.translateX(x),
+            camera.translateY(y),
+            width,
+            height,
+            null);
   }
 }

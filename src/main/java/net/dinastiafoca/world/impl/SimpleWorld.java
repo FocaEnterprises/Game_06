@@ -1,5 +1,6 @@
 package net.dinastiafoca.world.impl;
 
+import net.dinastiafoca.window.Camera;
 import net.dinastiafoca.window.renderer.Renderer;
 import net.dinastiafoca.world.Dimension;
 import net.dinastiafoca.world.World;
@@ -32,8 +33,8 @@ public class SimpleWorld implements World
   }
 
   @Override
-  public void render(Renderer renderer) {
-    getCurrentDimension().render(renderer);
+  public void render(Renderer renderer, Camera camera) {
+    getCurrentDimension().render(renderer, camera);
   }
 
   @Override

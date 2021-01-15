@@ -1,5 +1,6 @@
 package net.dinastiafoca.world;
 
+import net.dinastiafoca.window.Camera;
 import net.dinastiafoca.window.renderer.Renderer;
 
 /**
@@ -16,8 +17,9 @@ public interface World {
      * Called each BaseGame.doRender()
      *
      * @param renderer rendered that draw the game
+     * @param camera the current game camera
      */
-    void render(Renderer renderer);
+    void render(Renderer renderer, Camera camera);
 
     /**
      * Get all dimensions on this world

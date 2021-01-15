@@ -1,6 +1,7 @@
 package net.dinastiafoca.world;
 
 import net.dinastiafoca.entity.Entity;
+import net.dinastiafoca.window.Camera;
 import net.dinastiafoca.window.renderer.Renderer;
 
 import java.util.List;
@@ -15,8 +16,9 @@ public interface Dimension {
     /**
      * Called each @{@link World render()}
      * @param renderer Renderer
+     * @param camera the current game camera
      */
-    void render(Renderer renderer);
+    void render(Renderer renderer, Camera camera);
 
     World getWorld();
 

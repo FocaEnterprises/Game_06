@@ -1,5 +1,6 @@
 package net.dinastiafoca.entity;
 
+import net.dinastiafoca.window.Camera;
 import net.dinastiafoca.window.renderer.Renderer;
 import net.dinastiafoca.window.renderer.Sprite;
 import net.dinastiafoca.world.World;
@@ -36,7 +37,7 @@ public abstract class Entity {
 
     }
 
-    public void render(Renderer renderer) {
+    public void render(Renderer renderer, Camera camera) {
 
     }
 

@@ -1,5 +1,6 @@
 package net.dinastiafoca.game;
 
+import net.dinastiafoca.window.Camera;
 import net.dinastiafoca.window.Window;
 import net.dinastiafoca.window.renderer.Renderer;
 import net.dinastiafoca.world.World;
@@ -7,6 +8,7 @@ import net.dinastiafoca.world.impl.SimpleWorld;
 
 public class Game implements BaseGame {
     public Renderer renderer;
+    public Camera camera;
 
     private World world;
 
@@ -19,6 +21,7 @@ public class Game implements BaseGame {
                 .build();
         renderer = new Renderer(window);
         world = new SimpleWorld(100, 100);
+        camera = new Camera();
     }
 
     @Override
@@ -29,7 +32,7 @@ public class Game implements BaseGame {
     @Override
     public void doRender() {
         renderer.begin();
-        world.render(renderer);
+        world.render(renderer, camera);
         renderer.end();
     }
 

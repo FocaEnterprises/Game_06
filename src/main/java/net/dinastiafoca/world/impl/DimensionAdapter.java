@@ -2,6 +2,7 @@ package net.dinastiafoca.world.impl;
 
 import net.dinastiafoca.entity.Entity;
 import net.dinastiafoca.registry.Blocks;
+import net.dinastiafoca.window.Camera;
 import net.dinastiafoca.window.renderer.Renderer;
 import net.dinastiafoca.world.Block;
 import net.dinastiafoca.world.Dimension;
@@ -34,12 +35,12 @@ public class DimensionAdapter implements Dimension
   }
 
   @Override
-  public void render(Renderer renderer) {
+  public void render(Renderer renderer, Camera camera) {
     for(int block = 0; block < blocks.length; block++) {
-      Blocks.getById(blocks[block]).render(renderer, (block % WIDTH) * Block.BLOCK_SIZE, (block / WIDTH) * Block.BLOCK_SIZE);
+      Blocks.getById(blocks[block]).render(renderer, camera.translateX((block % WIDTH) * Block.BLOCK_SIZE), camera.translateY((block / WIDTH) * Block.BLOCK_SIZE));
     }
 
-    getEntities().forEach(entity -> entity.render(renderer));
+    getEntities().forEach(entity -> entity.render(renderer, camera));
   }
 
   @Override
