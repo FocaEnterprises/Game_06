@@ -1,6 +1,6 @@
 package net.dinastiafoca.entity;
 
-import net.dinastiafoca.entity.entities.EntityPlayer;
+import net.dinastiafoca.entity.entities.player.EntityPlayer;
 import net.dinastiafoca.game.BaseGame;
 import net.dinastiafoca.window.renderer.Sprite;
 import net.dinastiafoca.world.World;

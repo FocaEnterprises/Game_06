@@ -1,4 +1,4 @@
-package net.dinastiafoca.entity.entities;
+package net.dinastiafoca.entity.entities.player;
 
 import net.dinastiafoca.entity.MobEntity;
 import net.dinastiafoca.window.Camera;

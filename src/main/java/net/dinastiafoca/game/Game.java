@@ -1,7 +1,9 @@
 package net.dinastiafoca.game;
 
 import net.dinastiafoca.entity.EntityFactory;
-import net.dinastiafoca.entity.entities.EntityPlayer;
+import net.dinastiafoca.entity.entities.player.EntityPlayer;
+import net.dinastiafoca.entity.entities.player.PlayerController;
+import net.dinastiafoca.input.Keyboard;
 import net.dinastiafoca.window.Camera;
 import net.dinastiafoca.window.Window;
 import net.dinastiafoca.window.renderer.Renderer;
@@ -15,7 +17,9 @@ public class Game implements BaseGame {
 
     private EntityFactory entityFactory;
     private EntityPlayer player;
+    private PlayerController controller;
     private Spritesheet spritesheet;
+    private Keyboard keyboard;
     private World world;
 
     @Override
@@ -28,17 +32,26 @@ public class Game implements BaseGame {
 
         spritesheet = new Spritesheet();
         renderer = new Renderer(window);
+
         world = new SimpleWorld(100, 100);
-        entityFactory = new EntityFactory(world, this);
+
         camera = new Camera();
 
+        entityFactory = new EntityFactory(world, this);
+
+        keyboard = new Keyboard();
+        window.addKeyboard(keyboard);
+
         player = entityFactory.createPlayer(0, 0);
+        controller = new PlayerController(player, this);
+
         world.getDimension(0).addEntity(player);
     }
 
     @Override
     public void doTick() {
         world.update();
+        controller.update();
     }
 
     @Override
@@ -57,5 +70,10 @@ public class Game implements BaseGame {
     public Spritesheet getSpriteSheet()
     {
         return spritesheet;
+    }
+
+    @Override
+    public Keyboard getKeyboard() {
+        return keyboard;
     }
 }

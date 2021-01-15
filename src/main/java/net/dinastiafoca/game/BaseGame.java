@@ -1,5 +1,7 @@
 package net.dinastiafoca.game;
 
+import net.dinastiafoca.entity.entities.player.PlayerController;
+import net.dinastiafoca.input.Keyboard;
 import net.dinastiafoca.window.renderer.Spritesheet;
 
 /**
@@ -32,4 +34,10 @@ public interface BaseGame {
      * @return game sprite sheet instance
      */
     Spritesheet getSpriteSheet();
+
+    /**
+     * Get the game keyboard
+     * @return game keyboard instance
+     */
+   Keyboard getKeyboard();
 }
