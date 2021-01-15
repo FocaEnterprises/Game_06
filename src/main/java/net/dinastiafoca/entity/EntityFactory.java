@@ -18,7 +18,7 @@ public final class EntityFactory
 
   public EntityPlayer createPlayer(int x, int y)
   {
-    Sprite sprite = game.getSpriteSheet().getSprite("entity/player.png");
+    Sprite sprite = game.getSpriteSheet().getSprite("/entity/player.png");
     return new EntityPlayer(world, x, y, sprite);
   }
 }
