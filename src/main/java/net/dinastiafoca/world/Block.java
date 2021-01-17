@@ -7,8 +7,11 @@ public abstract class Block {
 
   public static final int BLOCK_SIZE = 16;
 
-  private final Sprite sprite;
-  private final int ID;
+  protected final Sprite sprite;
+
+  protected final int ID;
+
+  protected boolean mayPass = true;
 
   public Block(int id, Sprite sprite) {
     this.ID = id;
@@ -30,5 +33,10 @@ public abstract class Block {
   public int getId()
   {
     return ID;
+  }
+
+  public boolean mayPass()
+  {
+    return mayPass;
   }
 }

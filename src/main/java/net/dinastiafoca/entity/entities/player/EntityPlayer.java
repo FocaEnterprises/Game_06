@@ -19,7 +19,7 @@ public class EntityPlayer extends MobEntity
   @Override
   public void update()
   {
-
+    super.update();
   }
 
   @Override

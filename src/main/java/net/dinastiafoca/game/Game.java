@@ -42,7 +42,7 @@ public class Game implements BaseGame {
         keyboard = new Keyboard();
         window.addKeyboard(keyboard);
 
-        player = entityFactory.createPlayer(0, 0);
+        player = entityFactory.createPlayer(32, 32);
         controller = new PlayerController(player, this);
 
         world.getDimension(0).addEntity(player);

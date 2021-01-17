@@ -58,4 +58,16 @@ public interface World {
      * @return world height in blocks
      */
     int getHeight();
+
+    /**
+     * Get the world gravity
+     * @return the gravity value
+     */
+    float getGravity();
+
+    /**
+     * Set the world gravity
+     * @param gravity the new gravity
+     */
+    void setGravity(float gravity);
 }

@@ -16,6 +16,8 @@ public class SimpleWorld implements World
 
   private Dimension currentDimension;
 
+  private float gravity = 1.5f;
+
   public SimpleWorld(int width, int height) {
     this.WIDTH = width;
     this.HEIGHT = height;
@@ -66,5 +68,17 @@ public class SimpleWorld implements World
   @Override
   public int getHeight() {
     return HEIGHT;
+  }
+
+  @Override
+  public float getGravity()
+  {
+    return gravity;
+  }
+
+  @Override
+  public void setGravity(float gravity)
+  {
+    this.gravity = gravity;
   }
 }
