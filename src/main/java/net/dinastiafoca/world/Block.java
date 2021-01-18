@@ -11,7 +11,7 @@ public abstract class Block {
 
   protected final int ID;
 
-  protected boolean mayPass = true;
+  protected boolean mayPass = false;
 
   public Block(int id, Sprite sprite) {
     this.ID = id;

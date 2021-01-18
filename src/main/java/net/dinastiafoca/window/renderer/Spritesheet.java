@@ -25,4 +25,8 @@ public class Spritesheet {
         }
         return null;
     }
+
+    public static Sprite getBlockSprite(String name) {
+        return getSprite("/blocks/" + name + ".png");
+    }
 }
