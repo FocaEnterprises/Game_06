@@ -50,7 +50,9 @@ public class DimensionAdapter implements Dimension
 
   @Override
   public Block getBlock(int x, int y) {
-    return Blocks.getById(blocks[x + y * WIDTH]);
+    int index = x + y * WIDTH;
+
+    return index < blocks.length ? Blocks.getById(blocks[index]) : Blocks.AIR;
   }
 
   @Override
