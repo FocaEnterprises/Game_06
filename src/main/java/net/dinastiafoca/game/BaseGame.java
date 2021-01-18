@@ -30,12 +30,6 @@ public interface BaseGame {
     void onDestroy();
 
     /**
-     * Get the game sprite sheet
-     * @return game sprite sheet instance
-     */
-    Spritesheet getSpriteSheet();
-
-    /**
      * Get the game keyboard
      * @return game keyboard instance
      */

@@ -18,7 +18,6 @@ public class Game implements BaseGame {
     private EntityFactory entityFactory;
     private EntityPlayer player;
     private PlayerController controller;
-    private Spritesheet spritesheet;
     private Keyboard keyboard;
     private World world;
 
@@ -30,7 +29,6 @@ public class Game implements BaseGame {
                 .setHeight(600)
                 .build();
 
-        spritesheet = new Spritesheet();
         renderer = new Renderer(window);
 
         world = new SimpleWorld(100, 100);
@@ -64,12 +62,6 @@ public class Game implements BaseGame {
     @Override
     public void onDestroy() {
 
-    }
-
-    @Override
-    public Spritesheet getSpriteSheet()
-    {
-        return spritesheet;
     }
 
     @Override

@@ -3,6 +3,7 @@ package net.dinastiafoca.entity;
 import net.dinastiafoca.entity.entities.player.EntityPlayer;
 import net.dinastiafoca.game.BaseGame;
 import net.dinastiafoca.window.renderer.Sprite;
+import net.dinastiafoca.window.renderer.Spritesheet;
 import net.dinastiafoca.world.World;
 
 public final class EntityFactory
@@ -18,7 +19,7 @@ public final class EntityFactory
 
   public EntityPlayer createPlayer(int x, int y)
   {
-    Sprite sprite = game.getSpriteSheet().getSprite("/entity/player.png");
+    Sprite sprite = Spritesheet.getSprite("/entity/player.png");
     return new EntityPlayer(world, x, y, sprite);
   }
 }
