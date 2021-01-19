@@ -1,12 +1,7 @@
 package net.dinastiafoca.registry;
 
 import net.dinastiafoca.world.Block;
-import net.dinastiafoca.world.blocks.AirBlock;
-import net.dinastiafoca.world.blocks.BedrockBlock;
-import net.dinastiafoca.world.blocks.CobblestoneBlock;
-import net.dinastiafoca.world.blocks.DirtBlock;
-import net.dinastiafoca.world.blocks.ObsidianBlock;
-import net.dinastiafoca.world.blocks.StoneBlock;
+import net.dinastiafoca.world.blocks.*;
 
 import java.util.HashMap;
 
@@ -16,6 +11,7 @@ public class Blocks {
 
   public static final Block AIR         = register(new AirBlock());
   public static final Block STONE       = register(new StoneBlock());
+  public static final Block GRASS       = register(new GrassBlock());
   public static final Block DIRT        = register(new DirtBlock());
   public static final Block COBBLESTONE = register(new CobblestoneBlock());
   public static final Block OBSIDIAN    = register(new ObsidianBlock());
