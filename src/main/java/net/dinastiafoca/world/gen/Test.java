@@ -4,7 +4,6 @@ import net.dinastiafoca.window.Window;
 import net.dinastiafoca.window.renderer.Renderer;
 
 import java.awt.Color;
-import java.util.Random;
 
 public class Test
 {

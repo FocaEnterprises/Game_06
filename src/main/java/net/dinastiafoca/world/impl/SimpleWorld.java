@@ -4,6 +4,7 @@ import net.dinastiafoca.window.Camera;
 import net.dinastiafoca.window.renderer.Renderer;
 import net.dinastiafoca.world.Dimension;
 import net.dinastiafoca.world.World;
+import net.dinastiafoca.world.gen.WorldGenerator;
 
 import java.util.Arrays;
 
@@ -11,14 +12,19 @@ public class SimpleWorld implements World
 {
   private final Dimension[] dimensions = new Dimension[3];
 
+  private final WorldGenerator worldGenerator;
+
+  private final long SEED;
+
   private final int WIDTH;
   private final int HEIGHT;
 
   private Dimension currentDimension;
 
-  private float gravity = 1.5f;
+  private float gravity = 1f;
 
-  public SimpleWorld(int width, int height) {
+  public SimpleWorld(int width, int height, long seed) {
+    this.SEED = seed;
     this.WIDTH = width;
     this.HEIGHT = height;
 
@@ -27,6 +33,11 @@ public class SimpleWorld implements World
     dimensions[2] = new TheEndDimension(this);
 
     currentDimension = dimensions[0];
+    worldGenerator = new WorldGenerator(this);
+
+    worldGenerator.regenerateOverworld();
+    worldGenerator.regenerateNether();
+    worldGenerator.regenerateTheEnd();
   }
 
   @Override
@@ -80,5 +91,11 @@ public class SimpleWorld implements World
   public void setGravity(float gravity)
   {
     this.gravity = gravity;
+  }
+
+  @Override
+  public long getSeed()
+  {
+    return SEED;
   }
 }

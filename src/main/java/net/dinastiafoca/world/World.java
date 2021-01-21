@@ -70,4 +70,10 @@ public interface World {
      * @param gravity the new gravity
      */
     void setGravity(float gravity);
+
+    /**
+     * Get the World seed
+     * @return numeric seed
+     */
+    long getSeed();
 }
