@@ -25,6 +25,7 @@ public class Window {
         this.canvas.setPreferredSize(new Dimension(width, height));
 
         this.frame.add(canvas);
+        this.frame.pack();
 
         this.frame.setResizable(false);
         this.frame.setLocationRelativeTo(null);
