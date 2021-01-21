@@ -12,23 +12,40 @@ public class Test
 
   public static void main(String[] args) throws Exception
   {
-    Random rand = new Random();
-    OpenSimplexNoise noise = new OpenSimplexNoise(rand.nextLong());
-    Window win = new Window.WindowBuilder().setTitle("Noise").setWidth(720).setHeight(460).build();
+    OpenSimplexNoise noise = new OpenSimplexNoise();
+    Window win = new Window.WindowBuilder().setTitle("Noise").setWidth(800).setHeight(600).build();
     Renderer renderer = new Renderer(win);
 
-    while(true) {
-      noise = new OpenSimplexNoise(rand.nextLong());
-      renderer.begin();
-      renderer.setColor(Color.RED);
+    double[] blocks = new double[win.getWidth()];
 
-      for(int i = 0; i < win.getWidth(); i++) {
-        int a = (int) (noise.eval(i / FEATURE_SIZE, 200 / FEATURE_SIZE, 0) * 10);
-        renderer.drawLine(i, 200 + a, i, 200 + a);
+    int seed = 0;
+
+    while(true) {
+      int blockSize = 1;
+
+      double height;
+      int maxHeight = 50;
+      int resolution = 5;
+
+      for (int xx = 0; xx < blocks.length; xx++) {
+        height = maxHeight * (1 + noise.eval((xx + seed) / Math.sqrt(win.getWidth() * resolution), seed) / 2);
+        blocks[xx] = Math.floor(height);
       }
 
+      seed++;
+      renderer.begin();
+
+      renderer.setColor(Color.red);
+      for (int xx = 0; xx < blocks.length; xx++) {
+        renderer.fillRect(
+                xx * blockSize,
+                (int)((win.getHeight() / 2 - blockSize / 2) + blocks[xx] * blockSize),
+                blockSize,
+                blockSize);
+      }
+      
       renderer.end();
-      Thread.sleep(50);
+      Thread.sleep(400);
     }
   }
 }
