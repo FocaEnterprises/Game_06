@@ -1,8 +1,11 @@
 package net.dinastiafoca.entity.entities.player;
 
 import net.dinastiafoca.game.Game;
+import net.dinastiafoca.window.Window;
 
 import java.awt.event.KeyEvent;
+
+import static net.dinastiafoca.world.Block.BLOCK_SIZE;
 
 public class PlayerController {
     private final EntityPlayer player;
@@ -14,7 +17,6 @@ public class PlayerController {
         this.game = game;
     }
 
-
     public void update() {
         if(game.getKeyboard().getKeyPressed(KeyEvent.VK_D)) {
             player.moveX(speed);
@@ -22,5 +24,14 @@ public class PlayerController {
         else if(game.getKeyboard().getKeyPressed(KeyEvent.VK_A)) {
             player.moveX(-speed);
         }
+
+        Window window = game.getWindow();
+
+        game.camera.setClamp(
+                player.getX() - window.getWidth() / 2,
+                player.getY() - window.getHeight() / 2,
+                game.getWorld().getWidth() * BLOCK_SIZE - window.getWidth(),
+                game.getWorld().getHeight() * BLOCK_SIZE - window.getHeight()
+        );
     }
 }
