@@ -8,8 +8,10 @@ import static net.dinastiafoca.world.Block.BLOCK_SIZE;
 
 public abstract class MobEntity extends LivingEntity
 {
+  protected boolean jump;
   protected int speed;
-  protected float fallSpeed;
+  protected float vSpeed;
+
 
   public MobEntity(World world, int x, int y, int width, int height, Sprite sprite, int life, int maxLife)
   {
@@ -24,11 +26,36 @@ public abstract class MobEntity extends LivingEntity
   @Override
   public void update()
   {
-    fallSpeed += world.getGravity();
+    vSpeed += world.getGravity();
 
-    if(!move2(0, (int) fallSpeed)) {
-      fallSpeed = 0;
+    if (jump)
+    {
+      jump = false;
+
+      if(!isMoveAllowed(getX(), getY() +1) && isMoveAllowed(getX(), getY() -1))
+      {
+        vSpeed = -6;
+      }
     }
+
+    if (!isMoveAllowed(getX(), (int) (y + vSpeed))) {
+      int signVSpeed;
+
+      if (vSpeed >= 0) {
+        signVSpeed = 1;
+      }
+      else {
+        signVSpeed = -1;
+      }
+
+      while (isMoveAllowed(getX(), y + signVSpeed)){
+        y = y + signVSpeed;
+      }
+
+      vSpeed = 0;
+    }
+
+    moveY((int) vSpeed);
   }
 
   public void moveX(int x)
@@ -51,53 +78,37 @@ public abstract class MobEntity extends LivingEntity
     this.speed = speed;
   }
 
-  // https://github.com/skeeto/Minicraft/blob/master/src/com/mojang/ld22/entity/Entity.java
-  public boolean move(int xa, int ya) {
-    if (xa != 0 || ya != 0) {
-      boolean stopped = true;
-
-      if (xa != 0 && move2(xa, 0)) stopped = false;
-      if (ya != 0 && move2(0, ya)) stopped = false;
-
-      return !stopped;
-    }
-
-    return true;
+  public void jump() {
+    jump = true;
   }
 
-  // https://github.com/skeeto/Minicraft/blob/master/src/com/mojang/ld22/entity/Entity.java
-  protected boolean move2(int xa, int ya)
-  {
-    if(xa == 0 && ya == 0)
-      return false;
+  protected boolean isMoveAllowed(int nextX, int nextY) {
+    return isMoveAllowed0(
+            nextX + getMaskX(),
+            nextY + getMaskY(),
+            getWidth() - getMaskWidth(),
+            getHeight() - getMaskHeight()
+    );
+  }
 
-    if(xa != 0 && ya != 0)
-      throw new IllegalArgumentException("Move2 can only move along one axis at a time!");
+  protected boolean isMoveAllowed0(int nextX, int nextY, int width, int height) {
+    Dimension dimension = world.getCurrentDimension();
 
-    int xto0 = ((x) - width / 2) >> BLOCK_SIZE;
-    int yto0 = ((y) - height / 2) >> BLOCK_SIZE;
-    int xto1 = ((x) + width / 2) >> BLOCK_SIZE;
-    int yto1 = ((y) + height / 2) >> BLOCK_SIZE;
+    int x1 = nextX / BLOCK_SIZE;
+    int y1 = nextY / BLOCK_SIZE;
 
-    int xt0 = ((x + xa) - width / 2) / BLOCK_SIZE;
-    int yt0 = ((y + ya) - height / 2) / BLOCK_SIZE;
-    int xt1 = ((x + xa) + width / 2) / BLOCK_SIZE;
-    int yt1 = ((y + ya) + height / 2) / BLOCK_SIZE;
+    int x2 = (nextX + width -1) / BLOCK_SIZE;
+    int y2 = (nextY + height -1) / BLOCK_SIZE;
 
-    Dimension level = world.getCurrentDimension();
+    int x3 = nextX / BLOCK_SIZE;
+    int y3 = nextY / BLOCK_SIZE;
 
-    for(int yt = yt0; yt <= yt1; yt++) {
-      for(int xt = xt0; xt <= xt1; xt++) {
-        if(xt >= xto0 && xt <= xto1 && yt >= yto0 && yt <= yto1)
-          continue;
+    int x4 = (nextX + width -1) / BLOCK_SIZE;
+    int y4 = (nextY + height -1) / BLOCK_SIZE;
 
-        if(!level.getBlock(xt, yt).mayPass())
-          return false;
-      }
-    }
-
-    moveX(xa);
-    moveY(ya);
-    return true;
+    return dimension.getBlock(x1, y1).mayPass()
+            && dimension.getBlock(x2, y2).mayPass()
+            && dimension.getBlock(x3, y3).mayPass()
+            && dimension.getBlock(x4, y4).mayPass();
   }
 }

@@ -21,7 +21,7 @@ public class SimpleWorld implements World
 
   private Dimension currentDimension;
 
-  private float gravity = 1f;
+  private float gravity = 0.5f;
 
   public SimpleWorld(int width, int height, long seed) {
     this.SEED = seed;

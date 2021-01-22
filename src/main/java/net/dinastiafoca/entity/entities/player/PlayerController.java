@@ -21,8 +21,13 @@ public class PlayerController {
         if(game.getKeyboard().getKeyPressed(KeyEvent.VK_D)) {
             player.moveX(speed);
         }
-        else if(game.getKeyboard().getKeyPressed(KeyEvent.VK_A)) {
+
+        if(game.getKeyboard().getKeyPressed(KeyEvent.VK_A)) {
             player.moveX(-speed);
+        }
+
+        if(game.getKeyboard().getKeyPressed(KeyEvent.VK_SPACE)) {
+            player.jump();
         }
 
         Window window = game.getWindow();
