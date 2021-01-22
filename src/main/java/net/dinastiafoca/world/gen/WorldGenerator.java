@@ -9,8 +9,8 @@ import java.util.Random;
 
 public class WorldGenerator {
 
-  private static final int MAX_HEIGHT = 64;
-  private static final int RESOLUTION = 32;
+  private static final int MAX_HEIGHT = 20;
+  private static final int RESOLUTION = 10;
 
   private final OpenSimplexNoise noise;
   private final Random random;
@@ -44,10 +44,9 @@ public class WorldGenerator {
 
   private void generateSurface(Dimension dimension, int x, int y, Block top, Block bottom) {
     dimension.setBlock(x, y, top);
-    dimension.setBlock(x, y + 1, bottom);
-
-    if(random.nextInt(100) < 75) {
-      dimension.setBlock(x, y + 2, bottom);
+    double height = 5 * (1 + noise.eval((x + (world.getSeed() * 2)) / Math.sqrt(world.getWidth() * (RESOLUTION * 2)), world.getSeed() * 2) / 2);
+    for (int yy = 0; yy < height; yy++) {
+      dimension.setBlock(x, y + 1 + yy, bottom);
     }
   }
 
