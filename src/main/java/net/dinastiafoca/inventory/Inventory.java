@@ -19,6 +19,13 @@ public interface Inventory {
   void setTitle(String name);
 
   /**
+   * Get the inventory holder
+   *
+   * @return the inventory holder or null
+   */
+  InventoryHolder getHolder();
+
+  /**
    * Get item in specified slot
    *
    * @param slot the slot
