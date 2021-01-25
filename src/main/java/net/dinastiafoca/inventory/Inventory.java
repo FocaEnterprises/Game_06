@@ -6,6 +6,19 @@ package net.dinastiafoca.inventory;
 public interface Inventory {
 
   /**
+   * Get the inventory title
+   *
+   * @return the current inventory title
+   */
+  String getTitle();
+
+  /**
+   * Set the inventory title
+   * @param name the new inventory title
+   */
+  void setTitle(String name);
+
+  /**
    * Get item in specified slot
    *
    * @param slot the slot
