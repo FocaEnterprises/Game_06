@@ -1,5 +1,6 @@
 package net.dinastiafoca.world;
 
+import net.dinastiafoca.inventory.ItemID;
 import net.dinastiafoca.window.renderer.Renderer;
 import net.dinastiafoca.window.renderer.Sprite;
 
@@ -13,8 +14,8 @@ public abstract class Block {
 
   protected boolean mayPass = false;
 
-  public Block(int id, Sprite sprite) {
-    this.ID = id;
+  public Block(ItemID id, Sprite sprite) {
+    this.ID = id.ID;
     this.sprite = sprite;
   }
 

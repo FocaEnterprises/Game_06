@@ -1,10 +1,11 @@
 package net.dinastiafoca.world.blocks;
 
+import net.dinastiafoca.inventory.ItemID;
 import net.dinastiafoca.world.Block;
 
 public class AirBlock extends Block {
   public AirBlock() {
-    super(0, null);
+    super(ItemID.AIR, null);
     mayPass = true;
   }
 }
