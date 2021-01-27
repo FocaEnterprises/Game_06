@@ -80,6 +80,13 @@ public interface Inventory {
   int add(Item item);
 
   /**
+   * Clear all inventory slots
+   *
+   * @return the number os cleared items
+   */
+  int clear();
+
+  /**
    * Clear the item in the specified slot
    * @param slot the slot
    * @return the number of cleared items
