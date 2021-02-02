@@ -68,6 +68,18 @@ public abstract class MobEntity extends LivingEntity
     this.y += y;
   }
 
+  public void moveIfAllowedX(int x) {
+    if(isMoveAllowed(getX() + x, getY())) {
+      moveX(x);
+    }
+  }
+
+  public void moveIfAllowedY(int y) {
+    if(isMoveAllowed(getX(), getY() + y)) {
+      moveY(y);
+    }
+  }
+
   public int getSpeed()
   {
     return speed;

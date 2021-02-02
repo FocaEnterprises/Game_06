@@ -19,11 +19,11 @@ public class PlayerController {
 
     public void update() {
         if(game.getKeyboard().getKeyPressed(KeyEvent.VK_D)) {
-            player.moveX(speed);
+            player.moveIfAllowedX(speed);
         }
 
         if(game.getKeyboard().getKeyPressed(KeyEvent.VK_A)) {
-            player.moveX(-speed);
+            player.moveIfAllowedX(-speed);
         }
 
         if(game.getKeyboard().getKeyPressed(KeyEvent.VK_SPACE)) {
