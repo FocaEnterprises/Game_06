@@ -1,4 +1,3 @@
-Akira acima de tudo, Rikka acima de todos
 ## :video_game: Sobre o projeto
 
 Este projeto tem como objetivo recriar o jogo de número seis do curso de desenvolvimento de jogos da Danki Code, porém, seguindo boas práticas de programação, utilizando de SOLID.
