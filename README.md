@@ -8,7 +8,7 @@ Este projeto tem como objetivo recriar o jogo de número seis do curso de desenv
 Primeiro, clonamos nosso repositório:
 ```shell
 # Clone o repositório
-git clone https://github.com/foca-enterprises/Game_06.git
+git clone https://github.com/FocaEnterprises/Game_06.git
 
 # Navegue até a pasta do projeto
 cd Game_06
